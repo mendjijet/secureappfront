@@ -1,0 +1,15 @@
+ng new secureappfront --directory./ --no-standalone
+ng add @angular/material
+npm i @auth0/angular-jwt
+npm i bootstrap
+ng g interceptor interceptor/token --skip-tests
+ng g c component/stats --skip-tests=true
+ng g e environments/environment
+ng g e environments/environment.developments
+ng g i interface/role
+ng g s service/user --skip-tests=true
+
+ng g guard guard/authenticationguard --skip-tests=true
+
+
+npm i jspdf pour imprimer le code js en pdf
