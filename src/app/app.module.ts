@@ -16,11 +16,11 @@ import {CustomersComponent} from './component/customers/customers.component';
 import {NavbarComponent} from './component/navbar/navbar.component';
 import {StatsComponent} from './component/stats/stats.component';
 import {TokenInterceptor} from "./interceptor/token.interceptor";
-import { ExtractArrayValue } from './pipe/extractvalue.pipe';
-import { NewcustomerComponent } from './component/newcustomer/newcustomer.component';
-import { NewinvoiceComponent } from './component/newinvoice/newinvoice.component';
-import { InvoicesComponent } from './component/invoices/invoices.component';
-import { InvoiceComponent } from './component/invoice/invoice.component';
+import {ExtractArrayValue} from './pipe/extractvalue.pipe';
+import {NewcustomerComponent} from './component/newcustomer/newcustomer.component';
+import {NewinvoiceComponent} from './component/newinvoice/newinvoice.component';
+import {InvoicesComponent} from './component/invoices/invoices.component';
+import {InvoiceComponent} from './component/invoice/invoice.component';
 import {CacheInterceptor} from "./interceptor/cache.interceptor";
 
 @NgModule({
@@ -48,7 +48,11 @@ import {CacheInterceptor} from "./interceptor/cache.interceptor";
     HttpClientModule,
     FormsModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},{provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: CacheInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
