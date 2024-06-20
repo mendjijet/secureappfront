@@ -36,7 +36,6 @@ export class TokenInterceptor implements HttpInterceptor {
       );
   }
 
-  // @ts-ignore
   private handleRefreshToken(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(!this.isTokenRefreshing) {
       console.log('Refreshing Token...');

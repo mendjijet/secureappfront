@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {CustomHttpResponse, Profile} from "../interface/appstates";
+import {AccountType, CustomHttpResponse, Profile} from "../interface/appstates";
 import {environment} from "../../environments/environment.development";
 import {Key} from "../enum/key.enum";
 import {User} from "../interface/user";
@@ -22,9 +22,41 @@ export class UserService {
       tap(console.log), catchError(handleError)
     );
 
+  save$ = (user: User) => <Observable<CustomHttpResponse<Profile>>>
+    this.http.post<CustomHttpResponse<Profile>>
+    (`${environment.API_HOST}/user/register`, user)
+      .pipe(
+        tap(console.log),
+        catchError(handleError)
+      );
+
+  requestPasswordReset$ = (email: string) => <Observable<CustomHttpResponse<Profile>>>
+    this.http.get<CustomHttpResponse<Profile>>
+    (`${environment.API_HOST}/user/resetpassword/${email}`)
+      .pipe(
+        tap(console.log),
+        catchError(handleError)
+      );
+
   verifyCode$ = (email: string, code: string) => <Observable<CustomHttpResponse<Profile>>>
     this.http.get<CustomHttpResponse<Profile>>
     (`${environment.API_HOST}/user/verify/code/${email}/${code}`)
+      .pipe(
+        tap(console.log),
+        catchError(handleError)
+      );
+
+  verify$ = (key: string, type: AccountType) => <Observable<CustomHttpResponse<Profile>>>
+    this.http.get<CustomHttpResponse<Profile>>
+    (`${environment.API_HOST}/user/verify/${type}/${key}`)
+      .pipe(
+        tap(console.log),
+        catchError(handleError)
+      );
+
+  renewPassword$ = (form: { userId: number, password: string, confirmPassword: string }) => <Observable<CustomHttpResponse<Profile>>>
+    this.http.put<CustomHttpResponse<Profile>>
+    (`${environment.API_HOST}/user/new/password`, form)
       .pipe(
         tap(console.log),
         catchError(handleError)

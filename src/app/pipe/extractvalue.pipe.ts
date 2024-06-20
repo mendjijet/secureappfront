@@ -14,7 +14,7 @@ export class ExtractArrayValue implements PipeTransform {
       return numberArray;
     }
     if (args === 'invoices') {
-      value.forEach(invoice => {
+      value.forEach((invoice: { total: number; }) => {
         total += invoice.total;
       })
       return total.toFixed(2);

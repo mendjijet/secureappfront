@@ -13,3 +13,5 @@ ng g guard guard/authenticationguard --skip-tests=true
 
 
 npm i jspdf pour imprimer le code js en pdf
+
+npm i file-saver
