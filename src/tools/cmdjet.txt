@@ -17,3 +17,7 @@ npm i jspdf pour imprimer le code js en pdf
 npm i file-saver
 
 npm i angular-notifier for notification in tge app
+
+
+docker-compose up -d --build
+docker exec -it secureappfrontcontainer /bin/bash
