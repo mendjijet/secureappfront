@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../interface/user";
@@ -6,7 +6,8 @@ import {User} from "../../interface/user";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
   @Input() user: User;
